@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "defaultProject": "dockerapp",
+  "schematics": {
+    "@nrwl/angular": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/angular:application": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "style": "scss",
+      "linter": "eslint",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "style": "scss"
+    }
+  },
+  "projects": {
+    "dockerapp": {
+      "projectType": "application",
+      "root": "apps/dockerapp",
+      "sourceRoot": "apps/dockerapp/src",
+      "prefix": "tq",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/dockerapp",
+            "index": "apps/dockerapp/src/index.html",
+            "main": "apps/dockerapp/src/main.ts",
+            "polyfills": "apps/dockerapp/src/polyfills.ts",
+            "tsConfig": "apps/dockerapp/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "apps/dockerapp/src/favicon.ico",
+              "apps/dockerapp/src/assets"
+            ],
+            "styles": ["apps/dockerapp/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/dockerapp/src/environments/environment.ts",
+                  "with": "apps/dockerapp/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "dockerapp:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "dockerapp:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "dockerapp:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/dockerapp/src/**/*.ts",
+              "apps/dockerapp/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/dockerapp"],
+          "options": {
+            "jestConfig": "apps/dockerapp/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "dockerapp-e2e": {
+      "root": "apps/dockerapp-e2e",
+      "sourceRoot": "apps/dockerapp-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/dockerapp-e2e/cypress.json",
+            "tsConfig": "apps/dockerapp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "dockerapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "dockerapp:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["apps/dockerapp-e2e/**/*.{js,ts}"]
+          }
+        }
+      }
+    }
+  }
+}
