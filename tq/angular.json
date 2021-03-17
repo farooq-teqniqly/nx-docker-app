@@ -145,6 +145,28 @@
           }
         }
       }
+    },
+    "dx": {
+      "projectType": "library",
+      "root": "libs/dx",
+      "sourceRoot": "libs/dx/src",
+      "prefix": "tq",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": ["libs/dx/src/**/*.ts", "libs/dx/src/**/*.html"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/dx"],
+          "options": {
+            "jestConfig": "libs/dx/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   }
 }

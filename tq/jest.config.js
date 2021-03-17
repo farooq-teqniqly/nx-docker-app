@@ -1,3 +1,3 @@
 module.exports = {
-  projects: ['<rootDir>/apps/dockerapp'],
+  projects: ['<rootDir>/apps/dockerapp', '<rootDir>/libs/dx'],
 };
