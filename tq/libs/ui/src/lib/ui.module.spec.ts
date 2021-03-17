@@ -1,10 +1,10 @@
 import { async, TestBed } from '@angular/core/testing';
-import { DxModule } from './dx.module';
+import { UiModule } from './ui.module';
 
-describe('DxModule', () => {
+describe('UiModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DxModule],
+      imports: [UiModule],
     }).compileComponents();
   }));
 
@@ -13,6 +13,6 @@ describe('DxModule', () => {
   // NB: This particular test does not do anything useful.
   //     It does NOT check for correct instantiation of the module.
   it('should have a module definition', () => {
-    expect(DxModule).toBeDefined();
+    expect(UiModule).toBeDefined();
   });
 });

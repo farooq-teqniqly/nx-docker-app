@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@tq/dx": ["libs/dx/src/index.ts"]
+      "@tq/dx": ["libs/dx/src/index.ts"],
+      "@tq/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

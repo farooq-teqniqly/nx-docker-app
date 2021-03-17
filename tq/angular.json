@@ -51,7 +51,10 @@
               "apps/dockerapp/src/favicon.ico",
               "apps/dockerapp/src/assets"
             ],
-            "styles": ["apps/dockerapp/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
+              "apps/dockerapp/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -146,23 +149,23 @@
         }
       }
     },
-    "dx": {
+    "ui": {
       "projectType": "library",
-      "root": "libs/dx",
-      "sourceRoot": "libs/dx/src",
+      "root": "libs/ui",
+      "sourceRoot": "libs/ui/src",
       "prefix": "tq",
       "architect": {
         "lint": {
           "builder": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/dx/src/**/*.ts", "libs/dx/src/**/*.html"]
+            "lintFilePatterns": ["libs/ui/src/**/*.ts", "libs/ui/src/**/*.html"]
           }
         },
         "test": {
           "builder": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/dx"],
+          "outputs": ["coverage/libs/ui"],
           "options": {
-            "jestConfig": "libs/dx/jest.config.js",
+            "jestConfig": "libs/ui/jest.config.js",
             "passWithNoTests": true
           }
         }
