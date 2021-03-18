@@ -8,6 +8,10 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCardModule } from '@angular/material/card';
 import { MatMenuModule } from '@angular/material/menu';
 import { LayoutModule } from '@angular/cdk/layout';
+import { NavComponent } from './nav/nav.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatListModule } from '@angular/material/list';
 
 @NgModule({
   imports: [
@@ -18,11 +22,15 @@ import { LayoutModule } from '@angular/cdk/layout';
     MatGridListModule,
     MatCardModule,
     MatMenuModule,
-    LayoutModule
+    LayoutModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule
   ],
   exports: [
-    DashboardComponent
+    DashboardComponent,
+    NavComponent
   ],
-  declarations: [DashboardComponent]
+  declarations: [DashboardComponent, NavComponent]
 })
 export class UiModule {}
