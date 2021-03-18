@@ -1,2 +1,6 @@
-<!-- <tq-dashboard></tq-dashboard> -->
-<tq-nav></tq-nav>
+<nav class="nav">
+    <div><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Dashboard</a></div>
+    <div><a routerLink="/nav" routerLinkActive="active">Nav</a></div>
+    <div><a routerLink="/oops" routerLinkActive="active">Oops!</a></div>
+</nav>
+<router-outlet></router-outlet>
