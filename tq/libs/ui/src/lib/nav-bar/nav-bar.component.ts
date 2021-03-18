@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Nav } from './nav';
+import { NavItemsService } from './nav-items.service';
 
 @Component({
   selector: 'tq-nav-bar',
@@ -7,27 +8,11 @@ import { Nav } from './nav';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  navItems: Nav[] = [
-    {
-      link: '/',
-      name: 'Dashboard Component',
-      exact: true
-    },
-    {
-      link: '/nav',
-      name: 'Navigation Component',
-      exact: false
-    },
-    {
-      link: '/oops',
-      name: 'Default Component',
-      exact: false
-    }
-  ];
-  
-  constructor() { }
+  navItems: Nav[];
+  constructor(private service: NavItemsService) { }
 
   ngOnInit(): void {
+    this.navItems = this.service.getNavItems();
   }
 
 }
