@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Nav } from './nav';
 import { NavItemsService } from './nav-items.service';
 
@@ -8,11 +9,11 @@ import { NavItemsService } from './nav-items.service';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  navItems: Nav[];
+  navItems$: Observable<Nav[]>;
   constructor(private service: NavItemsService) { }
 
   ngOnInit(): void {
-    this.navItems = this.service.getNavItems();
+    this.navItems$ = this.service.getNavItems();
   }
 
 }

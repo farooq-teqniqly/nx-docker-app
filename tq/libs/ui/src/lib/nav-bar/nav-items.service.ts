@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
 import { Nav } from './nav';
 
 @Injectable({
@@ -7,8 +9,8 @@ import { Nav } from './nav';
 export class NavItemsService {
   constructor() { }
 
-  getNavItems(): Nav[] {
-    return [
+  getNavItems(): Observable<Nav[]> {
+    return of([
       {
         link: '/',
         name: 'Dashboard Component',
@@ -24,6 +26,6 @@ export class NavItemsService {
         name: 'Default Component (Dashboard)',
         exact: false
       }
-    ];
+    ]);
   }
 }
