@@ -131,15 +131,3 @@ summary {
   width: 16px;
   margin-right: 4px;
 }
-
-a {
-  background: gray;
-  color: white;
-  padding: 4px 10px;
-  margin: 0 2px;
-  border-radius: 2px;
-  &.active {
-    color:purple;
-    background: greenyellow;
-  }
-}
